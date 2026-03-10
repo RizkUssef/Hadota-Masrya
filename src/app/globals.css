@@ -1,8 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fff5e1;
   --foreground: #171717;
+
+  --color-headers: #2a2a72;
+
+  --color-labels: #1c1c1c;
+  --color-inputs-bg: #fff9ed;
+  --color-inputs-border: #9d4edd;
+  --color-inputs-placeholder: rgba(28, 28, 28, 0.5);
+
+  --color-cards-bg: #d6c6e1;
+
+  --color-buttons-bg: #9d4edd;
+  --color-buttons-text: #fff5e1;
+  --color-buttons-hover-bg: #7F41B3;
+
+  --color-links: #2a2a72;
+  --color-links-danger: #8e4e4e;
+
+  --color-icons: #9d4edd;
+
+  --color-unseen-username: #3d2260;
+  --color-unseen-message: #2d1b4e;
+  --color-unseen-timestamp: #9e8fb0;
+  --color-unseen-badge-bg: #6b21a8;
+  --color-unseen-badge-text: #fff5e1;
+  --color-unseen-tag: #9e8fb0;
+
+  --color-seen-username: #4f3a63;
+  --color-seen-message: #8a7a9b;
+  --color-seen-timestamp: #9e8fb0;
+  --color-seen-tag: #9e8fb0;
+
+  --color-chat-bg: rgba(214, 198, 225, 0.5);
+  --color-chat-header-bg: #d6c6e1;
+
+  --color-received-message-bg: #a68abc;
+  --color-received-message-text: #fff5e1;
+  --color-sent-message-bg: #d9fdd3;
+  --color-sent-message-text: #2d1b4e;
 }
 
 @theme inline {
@@ -14,8 +52,43 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #2a2a72;
     --foreground: #ededed;
+
+    --color-headers: #ffb627;
+
+    --color-labels: #1c1c1c;
+    --color-inputs-bg: #fff9ed;
+    --color-inputs-border: #9d4edd;
+    --color-inputs-placeholder: rgba(28, 28, 28, 0.5);
+
+    --color-cards-bg: #fff5e1;
+
+    --color-icons: #c47d2b;
+
+    --color-buttons-bg: #c47d2b;
+    --color-buttons-text: #fff5e1;
+    --color-buttons-hover-bg: #A0621A;
+
+    --color-links: #2a2a72;
+    --color-links-danger: #8e4e4e;
+
+    --color-unseen-username: #2c1810;
+    --color-unseen-message: #1a0f0a;
+    --color-unseen-timestamp: #b8997a;
+    --color-unseen-badge-bg: #c47d2b;
+    --color-unseen-badge-text: #fff5e1;
+    --color-unseen-tag: #b8997a;
+
+    --color-seen-username: #2c1810;
+    --color-seen-message: #a08070;
+    --color-seen-timestamp: #b8997a;
+    --color-seen-tag: #b8997a;
+
+    --color-received-message-bg: #513A31;
+    --color-received-message-text: #fff5e1;
+    --color-sent-message-bg: #005C4B;
+    --color-sent-message-text: #fff5e1;
   }
 }
 
