@@ -34,13 +34,15 @@ const CustomForm = <ResourceRequest,>({
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      key={"formik"}
     >
       {({ values, setFieldValue }) => (
         <Form
+          key={"form"}
           className={cn(
-            `${fields.length > 3 ? "grid grid-cols-1 md:grid-cols-2" : "flex flex-col"}`,
+            `${fields.length > 3 ? "grid grid-cols-1 bg-cards-bg py-5 px-10 rounded-xl md:grid-cols-2 w-1/3" : "flex flex-col"}`,
             "gap-2",
-            className
+            className,
           )}
         >
           {fields.map(
@@ -54,89 +56,94 @@ const CustomForm = <ResourceRequest,>({
               className,
             }) => {
               return (
-                <div key={name} className="flex flex-col gap-2">
-                  {label && (
-                    <label htmlFor={name} className="text-lg font-bold">
-                      {label}
-                    </label>
-                  )}
+                <>
+                  <div key={name} className="flex flex-col gap-2">
+                    {label && (
+                      <label
+                        key={name}
+                        htmlFor={name}
+                        className="text-lg text-labels font-bold"
+                      >
+                        {label}
+                      </label>
+                    )}
 
-                  {as === "select" ? (
-                    <CustomCombobox
-                      options={
-                        name === "personId" && values.rankId
-                          ? options.filter(
-                              (option) => option.rankId === values.rankId
-                            )
-                          : options
-                      }
-                      value={values[name]}
-                      setValue={(value) => {
-                        setFieldValue(name, value);
-                        if (name === "rankId")
-                          setFieldValue("personId", undefined);
-                      }}
-                    />
-                  ) : as === "date" ? (
-                    <CustomDatePicker
-                      date={values[name]}
-                      setDate={(date: string) => setFieldValue(name, date)}
-                    />
-                  ) : as === "file" ? (
-                    <Field name={name}>
-                      {({ form }) => (
-                        <input
-                          id={name}
-                          name={name}
-                          type="file"
-                          className={
-                            className ||
-                            "bg-[rgb(225,229,234)] w-full py-2 px-2 rounded-xl text-[#1B365D] border-none focus:outline-none mb-1"
-                          }
-                          onChange={(event) => {
-                            form.setFieldValue(
-                              name,
-                              event.currentTarget.files[0]
-                            );
-                          }}
-                        />
-                      )}
-                    </Field>
-                  ) : (
-                    <Field
-                      id={name}
-                      name={name}
-                      type={type}
-                      placeholder={placeholder}
-                      as={as}
-                      className={
-                        className ||
-                        "bg-[rgb(225,229,234)] w-full py-2 px-2 rounded-xl text-[#1B365D] border-none focus:outline-none mb-1"
-                      }
-                    />
-                  )}
-
+                    {as === "select" ? (
+                      <CustomCombobox
+                        key={"option"}
+                        options={
+                          name === "personId" && values.rankId
+                            ? options.filter(
+                                (option) => option.rankId === values.rankId,
+                              )
+                            : options
+                        }
+                        value={values[name]}
+                        setValue={(value) => {
+                          setFieldValue(name, value);
+                          if (name === "rankId")
+                            setFieldValue("personId", undefined);
+                        }}
+                      />
+                    ) : as === "date" ? (
+                      <CustomDatePicker
+                        key={"date"}
+                        date={values[name]}
+                        setDate={(date: string) => setFieldValue(name, date)}
+                      />
+                    ) : as === "file" ? (
+                      <Field name={name} key={name}>
+                        {({ form }) => (
+                          <input
+                            key={name}
+                            id={name}
+                            name={name}
+                            type="file"
+                            className={className || "inputs"}
+                            onChange={(event) => {
+                              form.setFieldValue(
+                                name,
+                                event.currentTarget.files[0],
+                              );
+                            }}
+                          />
+                        )}
+                      </Field>
+                    ) : (
+                      <Field
+                        key={name+"type"}
+                        id={name}
+                        name={name}
+                        type={type}
+                        placeholder={placeholder}
+                        as={as}
+                        className={className || "inputs"}
+                      />
+                    )}
+                  </div>
                   <ErrorMessage
+                    key={name + "error"}
                     name={name}
-                    component="div"
+                    component="p"
                     className="error-message"
                   />
-                </div>
+                </>
               );
-            }
+            },
           )}
 
           <button
+            key={"submit"}
             type="submit"
             disabled={isPending}
-            className="submit-button col-span-full"
+            className="submit-button"
           >
             {isPending ? (
-              <div className="flex w-full justify-center items-center">
-                <Spinner className="size-6" />
+              <div key={"spinner-dev"} className="flex w-full justify-center items-center">
+                <Spinner key={"spinner"} className="size-6" />
               </div>
             ) : (
-              <p>إرسال</p>
+              <p key={"submit-text"} className="leading-normal">Submit</p>
             )}
           </button>
         </Form>
