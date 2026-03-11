@@ -28,6 +28,8 @@
   --font-family-body: "Elmessiri", sans-serif;
   --font-family-en-logo: "Kavoon", sans-serif;
   --font-family-ar-logo: "Rakkas", sans-serif;
+  --font-family-en: "Elmessiri", sans-serif;
+  /* --font-family-en: "Kavoon", sans-serif; */
   --font-family-sans: sans-serif;
   /* --font-family-body: "Rakkas", sans-serif; */
   --color-logo-had: #9d4edd;
@@ -112,6 +114,7 @@
   --font-family-body: var(--font-family-body);
   --font-family-en-logo: var(--font-family-en-logo);
   --font-family-ar-logo: var(--font-family-ar-logo);
+  --font-family-en: var(--font-family-en);
   --color-logo-had: var(--color-logo-had);
   --color-logo-ota: var(--color-logo-ota);
   --color-buttons-bg: var(--color-buttons-bg);
@@ -119,9 +122,14 @@
   --color-buttons-hover-bg: var(--color-buttons-hover-bg);
   --font-sans: var(--font-family-sans);
   --color-background: var(--background);
+  --color-links-danger: var(--color-links-danger);
+  --color-links: var(--color-links);
   --color-foreground: var(--foreground);
-  /* --font-sans: var(--font-sans);
-  --font-mono: var(--font-family-body); */
+  --color-headers: var(--color-headers);
+  --color-labels: var(--color-labels);
+  --color-inputs-bg: var(--color-inputs-bg);
+  --color-inputs-border: var(--color-inputs-border);
+  --color-inputs-placeholder: var(--color-inputs-placeholder);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -149,6 +157,7 @@
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+  --color-cards-bg: var(--color-cards-bg);
   --color-card-foreground: var(--card-foreground);
   --color-icons: var(--color-icons);
   --color-icons-hover: var(--color-icons-hover);
@@ -168,12 +177,12 @@
     --font-family-en-logo: "Kavoon", sans-serif;
     --font-family-ar-logo: "Rakkas", sans-serif;
     --font-family-sans: sans-serif;
+    --font-family-en: "Elmessiri", sans-serif;
 
     --color-logo-had: #9d4edd;
     --color-logo-ota: #ffb627;
-
-    /* --font-family-body: "Rakkas", sans-serif; */
-
+    --color-links-danger: #8e4e4e;
+    --color-links: #2a2a72;
     --background: #2a2a72;
 
     --color-headers: #ffb627;
@@ -309,5 +318,14 @@
   }
   .icons:hover {
     @apply text-icons-hover;
+  }
+  .error-message {
+    @apply text-links-danger text-sm mt-[-10px];
+  }
+  .inputs{
+    @apply border-1 border-inputs-border border-solid bg-input w-full py-2 px-2 rounded-lg focus:outline-none mb-1
+  }
+  .submit-button {
+    @apply cursor-pointer leading-normal self-center bg-buttons-bg font-family-body hover:bg-buttons-hover-bg text-buttons-text transition duration-300 p-3 rounded-lg;
   }
 }
