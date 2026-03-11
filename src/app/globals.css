@@ -1,11 +1,39 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "Rakkas";
+  src: url("../../public/fonts/Rakkas-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Elmessiri";
+  src: url("../../public/fonts/ElMessiri-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Kavoon";
+  src: url("../../public/fonts/Kavoon-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
-  --background: #fff5e1;
-  --foreground: #171717;
+  --font-family-body: "Elmessiri", sans-serif;
+  --font-family-en-logo: "Kavoon", sans-serif;
+  --font-family-ar-logo: "Rakkas", sans-serif;
+  --font-family-sans: sans-serif;
+  /* --font-family-body: "Rakkas", sans-serif; */
+  --color-logo-had: #9d4edd;
+  --color-logo-ota: #ffb627;
 
   --color-headers: #2a2a72;
-
   --color-labels: #1c1c1c;
   --color-inputs-bg: #fff9ed;
   --color-inputs-border: #9d4edd;
@@ -15,12 +43,13 @@
 
   --color-buttons-bg: #9d4edd;
   --color-buttons-text: #fff5e1;
-  --color-buttons-hover-bg: #7F41B3;
+  --color-buttons-hover-bg: #7f41b3;
 
   --color-links: #2a2a72;
   --color-links-danger: #8e4e4e;
 
   --color-icons: #9d4edd;
+  --color-icons-hover: #7f41b3;
 
   --color-unseen-username: #3d2260;
   --color-unseen-message: #2d1b4e;
@@ -41,19 +70,111 @@
   --color-received-message-text: #fff5e1;
   --color-sent-message-bg: #d9fdd3;
   --color-sent-message-text: #2d1b4e;
+
+  --color-footer-text: #4a3a18;
+  --color-footer-border-top: rgba(201, 168, 76, 0.08);
+
+  --background: #fff5e1;
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 @theme inline {
+  --font-family-body: var(--font-family-body);
+  --font-family-en-logo: var(--font-family-en-logo);
+  --font-family-ar-logo: var(--font-family-ar-logo);
+  --color-logo-had: var(--color-logo-had);
+  --color-logo-ota: var(--color-logo-ota);
+  --color-buttons-bg: var(--color-buttons-bg);
+  --color-buttons-text: var(--color-buttons-text);
+  --color-buttons-hover-bg: var(--color-buttons-hover-bg);
+  --font-sans: var(--font-family-sans);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --font-sans: var(--font-sans);
+  --font-mono: var(--font-family-body); */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-icons: var(--color-icons);
+  --color-icons-hover: var(--color-icons-hover);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --font-family-body: "Elmessiri";
+    --font-family-en-logo: "Kavoon", sans-serif;
+    --font-family-ar-logo: "Rakkas", sans-serif;
+    --font-family-sans: sans-serif;
+
+    --color-logo-had: #9d4edd;
+    --color-logo-ota: #ffb627;
+
+    /* --font-family-body: "Rakkas", sans-serif; */
+
     --background: #2a2a72;
-    --foreground: #ededed;
 
     --color-headers: #ffb627;
 
@@ -64,11 +185,12 @@
 
     --color-cards-bg: #fff5e1;
 
-    --color-icons: #c47d2b;
+    --color-icons: #ffb627;
+    --color-icons-hover: #c47d2b;
 
     --color-buttons-bg: #c47d2b;
     --color-buttons-text: #fff5e1;
-    --color-buttons-hover-bg: #A0621A;
+    --color-buttons-hover-bg: #a0621a;
 
     --color-links: #2a2a72;
     --color-links-danger: #8e4e4e;
@@ -85,15 +207,107 @@
     --color-seen-timestamp: #b8997a;
     --color-seen-tag: #b8997a;
 
-    --color-received-message-bg: #513A31;
+    --color-received-message-bg: #513a31;
     --color-received-message-text: #fff5e1;
-    --color-sent-message-bg: #005C4B;
+    --color-sent-message-bg: #005c4b;
     --color-sent-message-text: #fff5e1;
+    /* --color-footer-text: #4a3a18; */
+    --color-footer-text: #c9a84c;
+    --color-footer-border-top: rgba(201, 168, 76, 0.08);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark {
+  --font-family-logo: "Rakkas", sans-serif;
+  --font-family-body: "Elmessiri";
+  /* --font-family-body: "Rakkas", sans-serif; */
+  --background: #2a2a72;
+
+  --color-buttons-bg: #c47d2b;
+  --color-buttons-text: #fff5e1;
+  --color-buttons-hover-bg: #a0621a;
+
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.205 0 0);
+
+  --card-foreground: oklch(0.985 0 0);
+
+  --popover: oklch(0.205 0 0);
+
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.87 0 0);
+
+  --primary-foreground: oklch(0.205 0 0);
+
+  --secondary: oklch(0.269 0 0);
+
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.269 0 0);
+
+  --muted-foreground: oklch(0.708 0 0);
+
+  --accent: oklch(0.371 0 0);
+
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 10%);
+
+  --input: oklch(1 0 0 / 15%);
+
+  --ring: oklch(0.556 0 0);
+
+  --chart-1: oklch(0.809 0.105 251.813);
+
+  --chart-2: oklch(0.623 0.214 259.815);
+
+  --chart-3: oklch(0.546 0.245 262.881);
+
+  --chart-4: oklch(0.488 0.243 264.376);
+
+  --chart-5: oklch(0.424 0.199 265.638);
+
+  --sidebar: oklch(0.205 0 0);
+
+  --sidebar-foreground: oklch(0.985 0 0);
+
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+
+  --sidebar-accent: oklch(0.269 0 0);
+
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+
+  --sidebar-border: oklch(1 0 0 / 10%);
+
+  --sidebar-ring: oklch(0.556 0 0);
+  /* --color-footer-text: var(--color-footer-text); */
+  --color-footer-text: var(--color-footer-text);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family-body);
+  }
+  html {
+    @apply font-[var(--font-family-body)];
+  }
+  .buttons {
+    @apply bg-buttons-bg font-family-body hover:bg-buttons-hover-bg text-buttons-text transition duration-300 p-3 rounded-lg;
+  }
+  .icons {
+    @apply text-icons size-[30px] transition duration-200 cursor-pointer;
+  }
+  .icons:hover {
+    @apply text-icons-hover;
+  }
 }
