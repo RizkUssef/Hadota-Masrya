@@ -1,3 +1,4 @@
+"use client"
 import { CustomDatePickerProps } from '@/types/CustomDatePickerProps'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from "@/components/ui/calendar";
