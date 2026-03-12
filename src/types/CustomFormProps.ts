@@ -1,6 +1,7 @@
 import { CustomFormField } from "./CustomFormField";
 
 export interface CustomFormProps<ResourceRequest> {
+  children?: React.ReactNode;
   fields: CustomFormField[];
   initialValues: any;
   validationSchema: any;
