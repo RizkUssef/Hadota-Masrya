@@ -5,6 +5,13 @@ import { cn } from "@/lib/utils";
 import { CustomFormProps } from "@/types/CustomFormProps";
 import CustomDatePicker from "./CustomDatePicker";
 import { Spinner } from "@/components/ui/spinner";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "../ui/input-otp";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
 
 const CustomForm = <ResourceRequest,>({
   children,
@@ -110,9 +117,29 @@ const CustomForm = <ResourceRequest,>({
                           />
                         )}
                       </Field>
+                    ) : as === "verfiy" ? (
+                      <InputOTP
+                        maxLength={6}
+                        value={values.verifyCode}
+                        onChange={(value) => setFieldValue("verifyCode", value)}
+                        pattern={REGEXP_ONLY_DIGITS}
+                        className="inputs"
+                        key={"otp"}
+                      >
+                        <InputOTPGroup className="mx-auto gap-3">
+                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={0} />
+                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={1} />
+                          <InputOTPSeparator />
+                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={2} />
+                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={3} />
+                          <InputOTPSeparator />
+                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={4} />
+                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={5} />
+                        </InputOTPGroup>
+                      </InputOTP>
                     ) : (
                       <Field
-                        key={name+"type"}
+                        key={name + "type"}
                         id={name}
                         name={name}
                         type={type}
@@ -142,11 +169,16 @@ const CustomForm = <ResourceRequest,>({
             className="submit-button"
           >
             {isPending ? (
-              <div key={"spinner-dev"} className="flex w-full justify-center items-center">
+              <div
+                key={"spinner-dev"}
+                className="flex w-full justify-center items-center"
+              >
                 <Spinner key={"spinner"} className="size-6" />
               </div>
             ) : (
-              <p key={"submit-text"} className="leading-normal">Submit</p>
+              <p key={"submit-text"} className="leading-normal">
+                Submit
+              </p>
             )}
           </button>
         </Form>

@@ -1,19 +1,11 @@
 "use client";
 import CustomForm from "@/components/Forms/CustomForm";
-import { useForgetPassword, useLogin, useVerifyAccount } from "@/hooks/useAuth";
+import { useVerifyAccount } from "@/hooks/useAuth";
 import { CustomFormField } from "@/types/CustomFormField";
 import { toastError, toastSuccess } from "@/utils/toast";
 import React from "react";
 import * as Yup from "yup";
 import { cn } from "@/lib/utils";
-import { verify } from "crypto";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
 import Link from "next/link";
 import { ROUTES } from "@/routers/router";
 
