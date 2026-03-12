@@ -2,6 +2,7 @@ import { ForgetPasswordRequest } from "@/types/ForgetPasswordRequest";
 import { LoginRequest } from "@/types/LoginRequest";
 import { RegisterRequest } from "@/types/RegisterRequest";
 import { ResetPasswordRequest } from "@/types/ResetPasswordRequest";
+import { VerifyAccountRequest } from "@/types/VerifyAccountRequest";
 import axiosInstance from "@/utils/axiosInstance";
 
 export const register = async (registerRequest: RegisterRequest) => {
@@ -38,7 +39,16 @@ export const resetPassword = async (resetPasswordRequest: ResetPasswordRequest) 
     const response = await axiosInstance.post("/reset-password", resetPasswordRequest);
     return response.data;
   } catch (err: any) {
-    console.error("forget password error:", err.response?.data || err.message);
+    console.error("reset password error:", err.response?.data || err.message);
+    throw err;
+  }
+};
+export const verifyAccount = async (verifyAccountRequest: VerifyAccountRequest) => {
+  try {
+    const response = await axiosInstance.post("/verify-account", verifyAccountRequest);
+    return response.data;
+  } catch (err: any) {
+    console.error(" verify account error:", err.response?.data || err.message);
     throw err;
   }
 };

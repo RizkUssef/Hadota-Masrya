@@ -1,9 +1,11 @@
-import { forgetPassword, login, register, resetPassword } from "@/services/api/authApi";
+import { forgetPassword, login, register, resetPassword, verifyAccount } from "@/services/api/authApi";
 import { ForgetPasswordRequest } from "@/types/ForgetPasswordRequest";
 import { LoginRequest } from "@/types/LoginRequest";
 import { RegisterRequest } from "@/types/RegisterRequest";
 import { ResetPasswordRequest } from "@/types/ResetPasswordRequest";
+import { VerifyAccountRequest } from "@/types/VerifyAccountRequest";
 import { useMutation } from "@tanstack/react-query";
+import { verify } from "crypto";
 
 export const useRegister = () => {
   return useMutation({
@@ -23,5 +25,10 @@ export const useForgetPassword = () => {
 export const useResetPassword = () => {
   return useMutation({
     mutationFn: (resetPasswordRequest: ResetPasswordRequest) => resetPassword(resetPasswordRequest),
+  });
+};
+export const useVerifyAccount = () => {
+  return useMutation({
+    mutationFn: (verifyAccountRequest: VerifyAccountRequest) => verifyAccount(verifyAccountRequest),
   });
 };

@@ -7,6 +7,9 @@ export const ROUTES = {
   login:      "/auth/login",
   register:   "/auth/register",
   forgetPassword: "/auth/forget-password",
+  resetPassword:  (token: string) => `/auth/reset-password/${token}`,
+  verifyAccount:  (token: string) => `/auth/verify-account/${token}`,
+  resendVerifyCode: "/auth/resend-verify-account",
 
   // chat
   chat:       "/chat",
