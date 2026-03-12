@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import CustomForm from "@/components/Forms/CustomForm";
 import { useRegister } from "@/hooks/useAuth";
 import { CustomFormField } from "@/types/CustomFormField";
@@ -6,7 +6,7 @@ import { toastError, toastSuccess } from "@/utils/toast";
 import React from "react";
 import * as Yup from "yup";
 import { cn } from "@/lib/utils";
-
+import Link from "next/link";
 
 const validationSchema = Yup.object({
   fullName: Yup.string().required("you must enter your full name"),
@@ -52,10 +52,17 @@ const RegisterPage = ({ className }: string) => {
 
   const { mutate: registerForm, isPending, error, isSuccess } = createForm;
   return (
-    <div className={cn("flex flex-col mx-auto my-auto justify-center items-center w-full h-screen", className)}>
-      <h1 className="font-family-en-logo text-headers mb-10 text-4xl">Register</h1>
+    <div
+      className={cn(
+        "flex flex-col mx-auto my-auto justify-center items-center w-full h-screen",
+        className,
+      )}
+    >
+      <h1 className="font-family-en-logo text-headers mb-10 text-4xl">
+        Register
+      </h1>
       <CustomForm
-        className={'flex flex-col font-family-en'}
+        className={"flex flex-col font-family-en"}
         fields={fields}
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -71,7 +78,11 @@ const RegisterPage = ({ className }: string) => {
           toastError(error?.response?.data.message);
         }}
         onSettled={() => {}}
-      />
+      >
+        <Link className="text-links font-bold self-end" href={"/auth/login"}>
+          Already have an account SignIn?
+        </Link>{" "}
+      </CustomForm>
     </div>
   );
 };
