@@ -1,6 +1,6 @@
 "use client";
 import CustomForm from "@/components/Forms/CustomForm";
-import { useRegister } from "@/hooks/useAuth";
+import { useLogin } from "@/hooks/useAuth";
 import { CustomFormField } from "@/types/CustomFormField";
 import { toastError, toastSuccess } from "@/utils/toast";
 import React from "react";
@@ -10,19 +10,11 @@ import Link from "next/link";
 import { ROUTES } from "@/routers/router";
 
 const validationSchema = Yup.object({
-  fullName: Yup.string().required("you must enter your full name"),
   userName: Yup.string().required("you must enter your user name"),
   password: Yup.string().required("you must enter your password"),
-  passwordConfirmation: Yup.string().required("you must confirm your password"),
 });
-const RegisterPage = ({ className }: string) => {
+const LoginPage = ({ className }: string) => {
   const fields: CustomFormField[] = [
-    {
-      name: "fullName",
-      label: "Full Name",
-      placeholder: "enter your full name",
-      type: "text",
-    },
     {
       name: "userName",
       label: "User Name",
@@ -35,12 +27,6 @@ const RegisterPage = ({ className }: string) => {
       placeholder: "enter your password",
       type: "password",
     },
-    {
-      name: "passwordConfirmation",
-      label: "Confirm Password",
-      placeholder: "confirm your password",
-      type: "password",
-    },
   ];
 
   const initialValues = Object.fromEntries(
@@ -49,9 +35,9 @@ const RegisterPage = ({ className }: string) => {
 
   const constructBody = (resourceRequest: any) => resourceRequest;
 
-  const createForm = useRegister();
+  const createForm = useLogin();
 
-  const { mutate: registerForm, isPending, error, isSuccess } = createForm;
+  const { mutate: loginForm, isPending, error, isSuccess } = createForm;
   return (
     <div
       className={cn(
@@ -59,19 +45,17 @@ const RegisterPage = ({ className }: string) => {
         className,
       )}
     >
-      <h1 className="font-family-en-logo text-headers mb-10 text-4xl">
-        Register
-      </h1>
+      <h1 className="font-family-en-logo text-headers mb-10 text-4xl">Login</h1>
       <CustomForm
         className={"flex flex-col font-family-en"}
         fields={fields}
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={registerForm}
+        onSubmit={loginForm}
         constructBody={constructBody}
         isPending={isPending}
         onSuccess={() => {
-          toastSuccess("تمت الإضافة بنجاح");
+          toastSuccess("تم تسجيل الدخول بنجاح");
           // onSuccess?.();
           // setOpen(false);
         }}
@@ -80,12 +64,13 @@ const RegisterPage = ({ className }: string) => {
         }}
         onSettled={() => {}}
       >
-        <Link className="text-links font-bold self-end" href={ROUTES.login}>
-          Already have an account SignIn?
+        {" "}
+        <Link className="text-links font-bold self-end" href={ROUTES.register}>
+          Not a member SignUp?
         </Link>{" "}
       </CustomForm>
     </div>
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
