@@ -7,6 +7,7 @@ import CustomDatePicker from "./CustomDatePicker";
 import { Spinner } from "@/components/ui/spinner";
 
 const CustomForm = <ResourceRequest,>({
+  children,
   fields = [],
   initialValues,
   validationSchema,
@@ -40,7 +41,7 @@ const CustomForm = <ResourceRequest,>({
         <Form
           key={"form"}
           className={cn(
-            `${fields.length > 3 ? "grid grid-cols-1 bg-cards-bg py-5 px-10 rounded-xl md:grid-cols-2 w-1/3" : "flex flex-col"}`,
+            `${fields.length > 3 ? "grid grid-cols-1 bg-cards-bg py-5 px-10 rounded-xl md:grid-cols-2 w-1/3" : "flex flex-col bg-cards-bg py-5 px-10 rounded-xl md:grid-cols-2 w-1/3"}`,
             "gap-2",
             className,
           )}
@@ -131,6 +132,8 @@ const CustomForm = <ResourceRequest,>({
               );
             },
           )}
+
+          {children}
 
           <button
             key={"submit"}
