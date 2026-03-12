@@ -1,6 +1,7 @@
 import { ForgetPasswordRequest } from "@/types/ForgetPasswordRequest";
 import { LoginRequest } from "@/types/LoginRequest";
 import { RegisterRequest } from "@/types/RegisterRequest";
+import { ResetPasswordRequest } from "@/types/ResetPasswordRequest";
 import axiosInstance from "@/utils/axiosInstance";
 
 export const register = async (registerRequest: RegisterRequest) => {
@@ -26,6 +27,15 @@ export const login = async (loginRequest: LoginRequest) => {
 export const forgetPassword = async (forgetPasswordRequest: ForgetPasswordRequest) => {
   try {
     const response = await axiosInstance.post("/forget-password", forgetPasswordRequest);
+    return response.data;
+  } catch (err: any) {
+    console.error("forget password error:", err.response?.data || err.message);
+    throw err;
+  }
+};
+export const resetPassword = async (resetPasswordRequest: ResetPasswordRequest) => {
+  try {
+    const response = await axiosInstance.post("/reset-password", resetPasswordRequest);
     return response.data;
   } catch (err: any) {
     console.error("forget password error:", err.response?.data || err.message);

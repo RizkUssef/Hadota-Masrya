@@ -1,7 +1,8 @@
-import { forgetPassword, login, register } from "@/services/api/authApi";
+import { forgetPassword, login, register, resetPassword } from "@/services/api/authApi";
 import { ForgetPasswordRequest } from "@/types/ForgetPasswordRequest";
 import { LoginRequest } from "@/types/LoginRequest";
 import { RegisterRequest } from "@/types/RegisterRequest";
+import { ResetPasswordRequest } from "@/types/ResetPasswordRequest";
 import { useMutation } from "@tanstack/react-query";
 
 export const useRegister = () => {
@@ -17,5 +18,10 @@ export const useLogin = () => {
 export const useForgetPassword = () => {
   return useMutation({
     mutationFn: (forgetPasswordRequest: ForgetPasswordRequest) => forgetPassword(forgetPasswordRequest),
+  });
+};
+export const useResetPassword = () => {
+  return useMutation({
+    mutationFn: (resetPasswordRequest: ResetPasswordRequest) => resetPassword(resetPasswordRequest),
   });
 };
