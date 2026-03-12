@@ -64,10 +64,20 @@ const LoginPage = ({ className }: string) => {
         }}
         onSettled={() => {}}
       >
-        {" "}
-        <Link className="text-links font-bold self-end" href={ROUTES.register}>
-          Not a member SignUp?
-        </Link>{" "}
+        <div className="flex justify-between items-center">
+          <Link
+            className="text-links font-bold self-end"
+            href={ROUTES.register}
+          >
+            Not a member SignUp?
+          </Link>
+          <Link
+            className="text-links-danger font-bold self-end"
+            href={ROUTES.forgetPassword}
+          >
+            Forget Password?
+          </Link>
+        </div>
       </CustomForm>
     </div>
   );
