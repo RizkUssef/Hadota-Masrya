@@ -10,7 +10,7 @@ import { Settings2 } from "lucide-react";
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-col justify-between items-first h-screen pt-20 pb-5w-fit">
+    <div className="flex flex-col justify-between items-first h-all-components-height mt-20 w-fit">
     <div className="flex flex-col gap-5 ml-5">
       <BsFillPersonFill className="icons" />
       <HiChatBubbleLeftRight className="icons" />
@@ -19,7 +19,7 @@ const Sidebar = () => {
       <IoPersonAdd className="icons" />
       <MdGroupAdd className="icons" />
     </div>
-    <div className="flex flex-col gap-5 ml-5 pb-5">
+    <div className="flex flex-col gap-5 ml-5">
       <Settings2 className="icons" />
       <IoLogOut className="icons" />
     </div>
