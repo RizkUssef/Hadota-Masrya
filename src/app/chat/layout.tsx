@@ -17,9 +17,9 @@ export default function ChatLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="w-full">
       <Logo />
-      <div className="flex gap-8">
+      <div className="flex gap-8 w-full">
         <Sidebar />
         {children}
       </div>
