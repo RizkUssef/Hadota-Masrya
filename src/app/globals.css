@@ -37,6 +37,7 @@
 
   --color-headers: #2a2a72;
   --color-labels: #1c1c1c;
+  --color-text: #1c1c1c;
   --color-inputs-bg: #fff9ed;
   --color-inputs-border: #9d4edd;
   --color-inputs-placeholder: rgba(28, 28, 28, 0.5);
@@ -50,7 +51,7 @@
   --color-links: #2a2a72;
   --color-links-danger: #8e4e4e;
 
-  --color-icons: #9d4edd;
+  --color-icons: #b16de9;
   --color-icons-hover: #7f41b3;
 
   --color-unseen-username: #3d2260;
@@ -108,6 +109,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --all-components-height: calc(100vh - 100px);
 }
 
 @theme inline {
@@ -127,6 +129,9 @@
   --color-foreground: var(--foreground);
   --color-headers: var(--color-headers);
   --color-labels: var(--color-labels);
+  --color-text: var(--color-text);
+  --color-chat-bg: var(--color-chat-bg);
+  --color-chat-header-bg: var(--color-chat-header-bg);
   --color-inputs-bg: var(--color-inputs-bg);
   --color-inputs-border: var(--color-inputs-border);
   --color-inputs-placeholder: var(--color-inputs-placeholder);
@@ -169,6 +174,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --height-all-components-height: var(--all-components-height);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -179,6 +185,7 @@
     --font-family-sans: sans-serif;
     --font-family-en: "Elmessiri", sans-serif;
 
+    --all-components-height: calc(100vh - 100px);
     --color-logo-had: #9d4edd;
     --color-logo-ota: #ffb627;
     --color-links-danger: #8e4e4e;
@@ -188,6 +195,8 @@
     --color-headers: #ffb627;
 
     --color-labels: #1c1c1c;
+    --color-text: #1c1c1c;
+
     --color-inputs-bg: #fff9ed;
     --color-inputs-border: #9d4edd;
     --color-inputs-placeholder: rgba(28, 28, 28, 0.5);
@@ -203,6 +212,9 @@
 
     --color-links: #2a2a72;
     --color-links-danger: #8e4e4e;
+
+    --color-chat-bg: rgba(255, 245, 225,0.5);
+    --color-chat-header-bg: #FFF5E1;
 
     --color-unseen-username: #2c1810;
     --color-unseen-message: #1a0f0a;
@@ -220,6 +232,7 @@
     --color-received-message-text: #fff5e1;
     --color-sent-message-bg: #005c4b;
     --color-sent-message-text: #fff5e1;
+
     /* --color-footer-text: #4a3a18; */
     --color-footer-text: #c9a84c;
     --color-footer-border-top: rgba(201, 168, 76, 0.08);
@@ -231,6 +244,7 @@
   --font-family-body: "Elmessiri";
   /* --font-family-body: "Rakkas", sans-serif; */
   --background: #2a2a72;
+  --all-components-height: calc(100vh - 100px);
 
   --color-buttons-bg: #c47d2b;
   --color-buttons-text: #fff5e1;
@@ -297,6 +311,7 @@
   --sidebar-ring: oklch(0.556 0 0);
   /* --color-footer-text: var(--color-footer-text); */
   --color-footer-text: var(--color-footer-text);
+  --color-text: #1c1c1c;
 }
 
 @layer base {
@@ -322,10 +337,13 @@
   .error-message {
     @apply text-links-danger text-sm mt-[-10px];
   }
-  .inputs{
-    @apply border-1 border-inputs-border border-solid bg-input w-full py-2 px-2 rounded-lg focus:outline-none mb-1
+  .inputs {
+    @apply border-1 border-inputs-border border-solid bg-input w-full py-2 px-2 rounded-lg focus:outline-none mb-1;
   }
   .submit-button {
     @apply cursor-pointer leading-normal self-center bg-buttons-bg font-family-body hover:bg-buttons-hover-bg text-buttons-text transition duration-300 p-3 rounded-lg;
+  }
+  .component-height {
+    height: var(--all-components-height);
   }
 }

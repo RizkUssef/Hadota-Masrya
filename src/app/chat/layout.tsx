@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Logo from "@/components/Layout/Logo";
+import Sidebar from "@/components/Layout/Sidebar";
 
 export const metadata: Metadata = {
-  title: "Register - Hadota",
+  title: "Chat - Hadota",
   description: "Hadota Masrya egyption chat app",
   viewport: "width=device-width, initial-scale=1.0",
   icons: {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AuthLayout({
+export default function ChatLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -18,7 +19,10 @@ export default function AuthLayout({
   return (
     <div>
       <Logo />
-      {children}
+      <div className="flex gap-8">
+        <Sidebar />
+        {children}
+      </div>
     </div>
   );
 }

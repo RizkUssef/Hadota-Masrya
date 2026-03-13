@@ -3,12 +3,12 @@ import React from "react";
 import LogoIcon from "../../../public/assets/Logo.svg";
 import Image from "next/image";
 
-const Logo = () => {
+const LogoImage = ({ className }: { className?: string }) => {
   return (
-    <div className={`fixed ml-5 mt-2 font-sans`}>
+    <div className={`${className}`}>
       <Image src={LogoIcon} alt="Hadota Logo" width={100} height={100} />
     </div>
   );
 };
 
-export default Logo;
+export default LogoImage;
