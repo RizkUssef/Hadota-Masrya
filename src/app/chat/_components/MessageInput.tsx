@@ -37,7 +37,7 @@ const MessageInput = () => {
   };
 
   return (
-    <div className="absolute bottom-5 gap-3 w-[95%] mx-auto">
+    <div className="absolute bottom-5 gap-3 w-[97%] mx-auto">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
