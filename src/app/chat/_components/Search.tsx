@@ -8,7 +8,7 @@ import React from "react";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({
-  userName: Yup.string().required("you must enter your user name"),
+  userName: Yup.string(),
 });
 const Search = () => {
   const fields: CustomFormField[] = [
@@ -30,7 +30,7 @@ const Search = () => {
   return (
     // <div className="bg-cards-bg flex flex-col w-90 justify-start gap-3 rounded-2xl h-all-components-height mt-20 pb-5">
     <CustomForm
-      className={"flex w-full px-3 flex-col font-family-en"}
+      className={"flex w-full px-3 flex-col font-family-en pb-0"}
       fields={fields}
       initialValues={initialValues}
       validationSchema={validationSchema}

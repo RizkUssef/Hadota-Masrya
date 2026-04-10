@@ -52,7 +52,7 @@ const MessageInput = () => {
             className="inputs"
           ></Field>
           <button type="submit" className="">
-            <FaLocationArrow className="icons rotate-[45deg] hover:rotate-0 transition-all duration-500" />
+            <FaLocationArrow className="icons ml-2 border-1 border-inputs-border border-solid bg-input py-1.5 px-1.5 rounded-lg focus:outline-none rotate-[45deg] hover:rotate-0 transition-all duration-500" />
           </button>
         </Form>
       </Formik>
