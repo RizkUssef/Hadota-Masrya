@@ -12,4 +12,5 @@ export interface CustomFormProps<ResourceRequest> {
   onError: () => void;
   onSettled: () => void;
   className?: string;
+  submitHide?: boolean;
 }

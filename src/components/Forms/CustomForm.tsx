@@ -25,6 +25,7 @@ const CustomForm = <ResourceRequest,>({
   onError,
   onSettled,
   className,
+  submitHide = false,
 }: CustomFormProps<ResourceRequest>) => {
   const handleSubmit = (values: any) => {
     const resourceRequest: ResourceRequest = {
@@ -161,7 +162,7 @@ const CustomForm = <ResourceRequest,>({
           )}
 
           {children}
-
+          {!submitHide && (
           <button
             key={"submit"}
             type="submit"
@@ -181,6 +182,7 @@ const CustomForm = <ResourceRequest,>({
               </p>
             )}
           </button>
+          )}
         </Form>
       )}
     </Formik>
