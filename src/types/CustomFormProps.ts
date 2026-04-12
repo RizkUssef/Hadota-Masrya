@@ -8,9 +8,9 @@ export interface CustomFormProps<ResourceRequest> {
   constructBody: (resourceRequest: ResourceRequest) => any;
   onSubmit: (body: any, options?: any) => void;
   isPending: boolean;
-  onSuccess: () => void;
-  onError: () => void;
-  onSettled: () => void;
+  onSuccess?: () => void;
+  onError?: () => void;
+  onSettled?: () => void;
   className?: string;
   submitHide?: boolean;
 }
