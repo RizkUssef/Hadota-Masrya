@@ -2,7 +2,6 @@
 import CustomForm from "@/components/Forms/CustomForm";
 import { useLogin } from "@/hooks/useAuth";
 import { CustomFormField } from "@/types/CustomFormField";
-import { toastError, toastSuccess } from "@/utils/toast";
 import React from "react";
 import * as Yup from "yup";
 import { cn } from "@/lib/utils";
@@ -10,13 +9,13 @@ import Link from "next/link";
 import { ROUTES } from "@/routers/router";
 
 const validationSchema = Yup.object({
-  userName: Yup.string().required("you must enter your user name"),
+  username: Yup.string().required("you must enter your user name"),
   password: Yup.string().required("you must enter your password"),
 });
 const LoginPage = ({ className }: string) => {
   const fields: CustomFormField[] = [
     {
-      name: "userName",
+      name: "username",
       label: "User Name",
       placeholder: "enter your user name",
       type: "text",
@@ -54,15 +53,6 @@ const LoginPage = ({ className }: string) => {
         onSubmit={loginForm}
         constructBody={constructBody}
         isPending={isPending}
-        onSuccess={() => {
-          toastSuccess("تم تسجيل الدخول بنجاح");
-          // onSuccess?.();
-          // setOpen(false);
-        }}
-        onError={() => {
-          toastError(error?.response?.data.message);
-        }}
-        onSettled={() => {}}
       >
         <div className="flex justify-between items-center">
           <Link

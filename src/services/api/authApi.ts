@@ -52,3 +52,13 @@ export const verifyAccount = async (verifyAccountRequest: VerifyAccountRequest) 
     throw err;
   }
 };
+
+export const me = async () => {
+  try {
+    const response = await axiosInstance.get("/me");
+    return response.data;
+  } catch (err: any) {
+    console.error("get user error:", err.response?.data || err.message);
+    throw err;
+  }
+};

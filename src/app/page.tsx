@@ -136,9 +136,9 @@ const Home = () => {
           animate={buttonControls}
           className="font-family-ar-logo cursor-pointer text-sm font-bold text-logo-ota"
         >
-          <Link href={ROUTES.register} className="buttons">
-           🪶 لتبدأ حدوتتك الخاصة
-           {/* 📜 لتبدأ حدوتتك الخاصة */}
+          <Link href={ROUTES.register} className="buttons" prefetch={true}>
+            🪶 لتبدأ حدوتتك الخاصة
+            {/* 📜 لتبدأ حدوتتك الخاصة */}
           </Link>
         </motion.div>
       </div>
