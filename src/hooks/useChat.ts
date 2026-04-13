@@ -1,8 +1,10 @@
+import { sendMessage } from "@/services/api/chatApi";
 import { SendMessageRequest } from "@/types/SendMessageRequest";
 import { useMutation } from "@tanstack/react-query";
 
 export const useSendMessage = () => {
   return useMutation({
-    mutationFn: (sendMessageRequest: SendMessageRequest) => sendMessage(sendMessageRequest),
+    mutationFn: (sendMessageRequest: SendMessageRequest) =>
+      sendMessage(sendMessageRequest),
   });
 };
