@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import EmptyConversationList from "./_components/EmptyConversationList";
-import EmptyChatWindow from "./_components/EmptyChatWindow";
-import ChatWindow from "./_components/ChatWindow";
-import ConversationList from "./_components/ConversationList";
+import EmptyConversationList from "./_components/empty-states/EmptyConversationList";
+import EmptyChatWindow from "./_components/empty-states/EmptyChatWindow";
+import ChatWindow from "./_components/chat/ChatWindow";
+import ConversationList from "./_components/chat/ConversationList";
 import { useSearchUser } from "@/hooks/useUser";
-import AddNewFriend from "./_components/AddNewFriend";
+import AddNewFriend from "./_components/user/AddNewFriend";
 
 const Page = () => {
   // const { data } = useAllUsers();

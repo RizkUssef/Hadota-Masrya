@@ -1,7 +1,8 @@
 import React from 'react'
 import ChatHeader from './ChatHeader'
-import EmptyMessageList from './EmptyMessageList'
-import MessageList from './MessageList'
+import EmptyMessageList from '../empty-states/EmptyMessageList'
+import MessageList from '../messages/MessageList'
+
 
 const ChatWindow = () => {
   return (

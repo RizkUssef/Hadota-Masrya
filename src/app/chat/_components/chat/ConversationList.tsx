@@ -1,6 +1,6 @@
 import React from "react";
 import OneUser from "./ChatItem";
-import Search from "./Search";
+import Search from "../user/Search";
 import { IoPersonAdd } from "react-icons/io5";
 import ChatItem from "./ChatItem";
 

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import sent from "../../../../public/assets/sent.svg";
-import delivered from "../../../../public/assets/delivered.svg";
-import seen from "../../../../public/assets/Logo.svg";
+import sent from "../../../../../public/assets/sent.svg";
+import delivered from "../../../../../public/assets/delivered.svg";
+import seen from "../../../../../public/assets/Logo.svg";
 import React from "react";
 
 const MessageStatus = ({ status, time }: { status: string; time: string }) => {

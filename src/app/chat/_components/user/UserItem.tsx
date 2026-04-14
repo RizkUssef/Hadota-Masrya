@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React from "react";
-import Av from "../assets/hero.jpeg";
+import Av from "../../assets/hero.jpeg";
 
 const UserItem = () => {
   return (
