@@ -44,6 +44,7 @@ const CustomForm = <ResourceRequest,>({
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
       key={"formik"}
+      enableReinitialize={true}
     >
       {({ values, setFieldValue }) => (
         <Form
@@ -87,7 +88,7 @@ const CustomForm = <ResourceRequest,>({
                               )
                             : options
                         }
-                        value={values[name]}
+                        value={values[name] || ""}
                         setValue={(value) => {
                           setFieldValue(name, value);
                           if (name === "rankId")
@@ -97,7 +98,7 @@ const CustomForm = <ResourceRequest,>({
                     ) : as === "date" ? (
                       <CustomDatePicker
                         key={"date"}
-                        date={values[name]}
+                        date={values[name] || ""}
                         setDate={(date: string) => setFieldValue(name, date)}
                       />
                     ) : as === "file" ? (
@@ -128,14 +129,32 @@ const CustomForm = <ResourceRequest,>({
                         key={"otp"}
                       >
                         <InputOTPGroup className="mx-auto gap-3">
-                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={0} />
-                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={1} />
+                          <InputOTPSlot
+                            className="inputs border-1 border-inputs-border border-solid"
+                            index={0}
+                          />
+                          <InputOTPSlot
+                            className="inputs border-1 border-inputs-border border-solid"
+                            index={1}
+                          />
                           <InputOTPSeparator />
-                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={2} />
-                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={3} />
+                          <InputOTPSlot
+                            className="inputs border-1 border-inputs-border border-solid"
+                            index={2}
+                          />
+                          <InputOTPSlot
+                            className="inputs border-1 border-inputs-border border-solid"
+                            index={3}
+                          />
                           <InputOTPSeparator />
-                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={4} />
-                          <InputOTPSlot className="inputs border-1 border-inputs-border border-solid" index={5} />
+                          <InputOTPSlot
+                            className="inputs border-1 border-inputs-border border-solid"
+                            index={4}
+                          />
+                          <InputOTPSlot
+                            className="inputs border-1 border-inputs-border border-solid"
+                            index={5}
+                          />
                         </InputOTPGroup>
                       </InputOTP>
                     ) : (
@@ -163,25 +182,25 @@ const CustomForm = <ResourceRequest,>({
 
           {children}
           {!submitHide && (
-          <button
-            key={"submit"}
-            type="submit"
-            disabled={isPending}
-            className="submit-button"
-          >
-            {isPending ? (
-              <div
-                key={"spinner-dev"}
-                className="flex w-full justify-center items-center"
-              >
-                <Spinner key={"spinner"} className="size-6" />
-              </div>
-            ) : (
-              <p key={"submit-text"} className="leading-normal">
-                Submit
-              </p>
-            )}
-          </button>
+            <button
+              key={"submit"}
+              type="submit"
+              disabled={isPending}
+              className="submit-button"
+            >
+              {isPending ? (
+                <div
+                  key={"spinner-dev"}
+                  className="flex w-full justify-center items-center"
+                >
+                  <Spinner key={"spinner"} className="size-6" />
+                </div>
+              ) : (
+                <p key={"submit-text"} className="leading-normal">
+                  Submit
+                </p>
+              )}
+            </button>
           )}
         </Form>
       )}
