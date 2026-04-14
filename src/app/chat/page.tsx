@@ -20,7 +20,7 @@ const Page = () => {
     // <div >
     <div className="flex gap-10 w-full">
       {/* <EmptyConversationList /> */}
-      <AddNewFriend />
+      {/* <AddNewFriend /> */}
       <ConversationList />
       {/* <EmptyChatWindow /> */}
       <ChatWindow />

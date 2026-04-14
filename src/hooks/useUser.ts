@@ -9,19 +9,22 @@ export const useAllUsers = () => {
     refetchOnMount: "always",
   });
 };
-export const useSearchUser = ({
-  username,
-  email,
-  displayName,
-}: {
-  username?: string;
-  email?: string;
-  displayName?: string;
-}) => {
+export const useSearchUser = (params?: Record<string, any>) => {
   return useQuery({
-    queryKey: ["userSearch"],
-    queryFn: () => searchUser({ username, email, displayName }),
+    queryKey: ["userSearch", params],
+    queryFn: () => searchUser(params),
     retry: false,
     refetchOnMount: "always",
+    enabled: params?.enabled ?? false,
   });
 };
+
+// export const useInboxEmails = (params?: Record<string, any>) => {
+//   return useQuery<InboxEmail[]>({
+//     queryKey: ["inbox", params?.filter],
+//     queryFn: () => getInboxEmails(params),
+//     staleTime: Infinity,
+//     placeholderData: keepPreviousData,
+//     enabled: !!params?.enabled,
+//   });
+// };

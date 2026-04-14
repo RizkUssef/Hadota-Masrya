@@ -9,24 +9,10 @@ export const allUsers = async () => {
     throw err;
   }
 };
-export const searchUser = async ({
-  username,
-  email,
-  displayName,
-}: {
-  username?: string;
-  email?: string;
-  displayName?: string;
-}) => {
+export const searchUser = async (params?: Record<string, any>) => {
   try {
     const response = await axiosInstance.get("/users", {
-      params: {
-        filters: {
-          username: { operator: "like", value: { username } },
-          email: { operator: "like", value: { email } },
-          displayName: { operator: "like", value: { displayName } },
-        },
-      },
+      params,
     });
     return response.data;
   } catch (err: any) {
