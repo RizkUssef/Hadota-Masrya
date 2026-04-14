@@ -64,6 +64,7 @@ const CustomForm = <ResourceRequest,>({
               placeholder = "",
               options = [],
               className,
+              handleCustomChange,
             }) => {
               return (
                 <>
@@ -166,6 +167,13 @@ const CustomForm = <ResourceRequest,>({
                         placeholder={placeholder}
                         as={as}
                         className={className || "inputs"}
+                        onChange={(e: any) => {
+                          const newValue = e.target.value;
+                          setFieldValue(name, newValue);
+                          if (handleCustomChange) {
+                            handleCustomChange(newValue, setFieldValue);
+                          }
+                        }}
                       />
                     )}
                   </div>
