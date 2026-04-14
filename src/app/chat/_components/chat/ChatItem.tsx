@@ -8,7 +8,7 @@ const ChatItem = ({
   hasUnseenMessages?: boolean;
 }) => {
   return (
-    <div className="hover:cursor-pointer flex justify-between items-center w-[95%] mx-auto mb-3">
+    <div className="hover:cursor-pointer flex justify-between items-center w-[93.5%] mx-auto mb-3">
       <div className="flex items-center gap-4">
         <div>
           <Avatar className="size-12">

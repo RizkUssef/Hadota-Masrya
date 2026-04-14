@@ -5,12 +5,12 @@ import React, { useState } from "react";
 import { MdCancel } from "react-icons/md";
 import * as Yup from "yup";
 import Link from "next/link";
-import UserItem from "./UserItem";
 import { motion } from "framer-motion";
 import { useSearchUser } from "@/hooks/useUser";
+import UserList from "./UserList";
 
 const validationSchema = Yup.object({
-  username: Yup.string().required("you must enter your user name"),
+  displayName: Yup.string().required("you must enter your user name"),
 });
 
 const AddNewFriend = () => {
@@ -22,7 +22,7 @@ const AddNewFriend = () => {
 
   const fields: CustomFormField[] = [
     {
-      name: "username",
+      name: "displayName",
       label: "",
       placeholder: "enter your user name",
       type: "text",
@@ -34,11 +34,11 @@ const AddNewFriend = () => {
 
         // Set new timer - waits 500ms after user stops typing
         const timer = setTimeout(() => {
-          const username = value?.trim();
-          console.log(username);
-          
-          if (username) {
-            setSearchQuery(username); // Trigger the query
+          const displayName = value?.trim();
+          console.log(displayName);
+
+          if (displayName) {
+            setSearchQuery(displayName); // Trigger the query
           } else {
             setSearchQuery(""); // Clear search if input is empty
           }
@@ -56,15 +56,15 @@ const AddNewFriend = () => {
   const {
     data: searchResults,
     isPending,
+    isFetching,
   } = useSearchUser({
     filters: {
-      username: { operator: "like", value: trimmedSearchQuery },
+      displayName: { operator: "starts_with", value: trimmedSearchQuery },
     },
     enabled: !!trimmedSearchQuery,
   });
+  const isLoading = (isPending || isFetching) && trimmedSearchQuery.length > 0;
 
-  console.log(searchResults);
-  
   return (
     <motion.div
       initial={{ x: -50, opacity: 0 }}
@@ -73,7 +73,7 @@ const AddNewFriend = () => {
         duration: 0.2,
         ease: "easeInOut",
       }}
-      className="bg-cards-bg flex flex-col w-90 justify-start gap-3 rounded-2xl h-all-components-height mt-20 pb-5"
+      className=" bg-cards-bg flex flex-col w-90 justify-start gap-3 rounded-2xl h-all-components-height mt-20 pb-5"
     >
       <div className="flex justify-between items-center pt-3 px-3">
         <h1 className="text-headers text-2xl font-bold">Add New Friend</h1>
@@ -81,6 +81,7 @@ const AddNewFriend = () => {
           <MdCancel className="icons size-6" />
         </Link>
       </div>
+      {/* the custom form here not used to send request it used to display the form input and the request is done by the useSearchUser hook after the user stops typing in the input field */}
       <CustomForm
         className={"flex w-full px-3 flex-col font-family-en pt-0 pb-0"}
         fields={fields}
@@ -91,7 +92,10 @@ const AddNewFriend = () => {
         isPending={isPending}
         submitHide={true}
       />
-      <UserItem />
+      <UserList
+        isLoading={isLoading}
+        Users={Array.isArray(searchResults?.data) ? searchResults?.data : []}
+      />
     </motion.div>
   );
 };
