@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React from "react";
 import Av from "../assets/hero.jpeg";
 
-const OneUser = ({
+const ChatItem = ({
   hasUnseenMessages = false,
 }: {
   hasUnseenMessages?: boolean;
@@ -53,4 +53,4 @@ const OneUser = ({
   );
 };
 
-export default OneUser;
+export default ChatItem;
