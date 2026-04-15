@@ -6,6 +6,7 @@ import ChatWindow from "./_components/chat/ChatWindow";
 import ConversationList from "./_components/chat/ConversationList";
 import { useSearchUser } from "@/hooks/useUser";
 import AddNewFriend from "./_components/user/AddNewFriend";
+import { useMeContext } from "@/hooks/useMeContext";
 
 const Page = () => {
   // const { data } = useAllUsers();
@@ -15,6 +16,10 @@ const Page = () => {
 
   // const { data } = useSearchUser({  displayName });
   // console.log(data);
+
+  const { me } = useMeContext();
+  console.log(me);
+  
 
   return (
     // <div >

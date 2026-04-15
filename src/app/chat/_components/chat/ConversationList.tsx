@@ -4,8 +4,17 @@ import { IoPersonAdd } from "react-icons/io5";
 import ChatItem from "./ChatItem";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useUserContacts } from "@/hooks/useContact";
 
 const ConversationList = () => {
+  const { data: contacts } = useUserContacts({
+    filters: {
+      userId: { operator: "eq", value: 1 },
+    },
+    enabled: true,
+  });
+  console.log(contacts);
+  
   return (
     <motion.div
       initial={{ x: -50, opacity: 0 }}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Logo from "@/components/Layout/Logo";
 import Sidebar from "@/components/Layout/Sidebar";
+import MeContextProvider from "@/context/MeContext";
 
 export const metadata: Metadata = {
   title: "Chat - Hadota",
@@ -17,12 +18,14 @@ export default function ChatLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="w-full">
-      <Logo />
-      <div className="flex gap-8 w-full">
-        <Sidebar />
-        {children}
+    <MeContextProvider>
+      <div className="w-full">
+        <Logo />
+        <div className="flex gap-8 w-full">
+          <Sidebar />
+          {children}
+        </div>
       </div>
-    </div>
+    </MeContextProvider>
   );
 }
