@@ -5,15 +5,24 @@ import ChatItem from "./ChatItem";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useUserContacts } from "@/hooks/useContact";
+import { useMeContext } from "@/hooks/useMeContext";
+import { useAllUsers } from "@/hooks/useUser";
+import { useUserConversations } from "@/hooks/useConversation";
 
 const ConversationList = () => {
-  const { data: contacts } = useUserContacts({
+  const { me } = useMeContext();
+
+  const { data: conversations } = useUserConversations({
     filters: {
-      userId: { operator: "eq", value: 1 },
+      createdBy: { operator: "eq", value: me?.data?.id },
     },
+    relationships: ['members.user','lastMessage'],
     enabled: true,
   });
-  console.log(contacts);
+
+  // const { data: allUsers } = useAllUsers();
+
+  console.log(conversations);
   
   return (
     <motion.div
@@ -32,8 +41,12 @@ const ConversationList = () => {
         </Link>
       </div>
       <Search />
-      <ChatItem hasUnseenMessages={true} />
-      <ChatItem hasUnseenMessages={false} />
+
+      {conversations?.data?.map((conversation) => (
+        <ChatItem key={conversation.id} conversation={conversation} hasUnseenMessages={true} />
+      ))}
+      {/* <ChatItem hasUnseenMessages={true} />
+      <ChatItem hasUnseenMessages={false} /> */}
     </motion.div>
   );
 };
