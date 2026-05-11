@@ -9,7 +9,7 @@ import { useMeContext } from "@/hooks/useMeContext";
 import { useAllUsers } from "@/hooks/useUser";
 import { useUserConversations } from "@/hooks/useConversation";
 
-const ConversationList = () => {
+const ConversationList = ({ onSelect }: { onSelect: any }) => {
   const { me } = useMeContext();
 
   const { data: conversations } = useUserConversations({
@@ -19,10 +19,6 @@ const ConversationList = () => {
     relationships: ['members.user','lastMessage'],
     enabled: true,
   });
-
-  // const { data: allUsers } = useAllUsers();
-
-  console.log(conversations);
   
   return (
     <motion.div
@@ -43,7 +39,7 @@ const ConversationList = () => {
       <Search />
 
       {conversations?.data?.map((conversation) => (
-        <ChatItem key={conversation.id} conversation={conversation} hasUnseenMessages={true} />
+        <ChatItem onClick={() => onSelect(conversation)}  key={conversation.id} conversation={conversation} />
       ))}
       {/* <ChatItem hasUnseenMessages={true} />
       <ChatItem hasUnseenMessages={false} /> */}

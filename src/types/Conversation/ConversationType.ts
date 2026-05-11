@@ -13,20 +13,20 @@ export interface Conversation {
 }
 
 export interface ConversationMemeber {
-  conversation_id: string;
-  user_id: string;
+  conversationId: string;
+  userId: string;
   user: ConversationUser;
   role: string;
   nickname: string;
-  is_muted: boolean;
-  muted_until: Date;
-  is_pinned: boolean;
-  unread_count: number;
-  last_read_at: Date;
-  last_read_message_id: string;
-  joined_at: Date;
-  left_at: Date;
-  invited_by: string;
+  isMuted: boolean;
+  mutedUntil: Date;
+  isPinned: boolean;
+  unreadCount: number;
+  lastReadAt: Date;
+  lastReadMessageId: string;
+  joinedAt: Date;
+  leftAt: Date;
+  invitedBy: string;
 }
 export interface ConversationUser {
   uuid: string;
@@ -46,12 +46,12 @@ export interface ConversationUser {
 export interface ConversationUserItemData {
   id: string;
   uuid: string;
-  user_id: string;
-  contact_id: string;
+  userId: string;
+  contactId: string;
   contact: ConversationUser;
   user: ConversationUser;
   nickname: string;
-  is_favorite: boolean;
-  created_at: Date;
-  updated_at: Date;
+  isFavorite: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
